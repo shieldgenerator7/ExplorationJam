@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CellArranger : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CellArranger : MonoBehaviour
     public List<CellObject> cells;
 
     public CellObject playerObj;
+    public GameObject canvas;
+    public Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,8 @@ public class CellArranger : MonoBehaviour
             {
                 if ((rch2d.collider.transform.position - playerObj.transform.position).magnitude <= range)
                 {
+                    CellObject co = rch2d.collider.gameObject.GetComponent<CellObject>();
+                    adjustScore(co.cell.score);
                     playerObj.transform.position = rch2d.collider.transform.position;
                     Destroy(rch2d.collider.gameObject);
                 }
@@ -40,9 +45,12 @@ public class CellArranger : MonoBehaviour
 
     public void generate(int width = 10)
     {
+        canvas.transform.parent = null;
         cells?.ForEach(cell => Destroy(cell.gameObject));
         cells = new List<CellObject>();
         playerObj = generateCell(0, 0, playerTemplate);
+        canvas.transform.parent = playerObj.transform;
+        canvas.transform.position = Vector2.up;
         for (int i = 0; i < width; i++)
         {
             float min = -(i + 1.0f) / 2.0f;
@@ -63,5 +71,12 @@ public class CellArranger : MonoBehaviour
         cellObject.acceptCell(cell);
         go.transform.position = new Vector2(x, y);
         return cellObject;
+    }
+
+    public int score;
+    public void adjustScore(int add)
+    {
+        score += add;
+        text.text = ""+score;
     }
 }

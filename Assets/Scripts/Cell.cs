@@ -16,4 +16,5 @@ public class Cell : ScriptableObject
     }
     public Type type;
     public List<string> rpsList;
+    public int score;
 }
