@@ -15,6 +15,7 @@ public class CellArranger : MonoBehaviour
 
     public CellObject playerObj;
     public GameObject canvas;
+    public GameObject camera;
     public Text text;
 
     // Start is called before the first frame update
@@ -46,11 +47,14 @@ public class CellArranger : MonoBehaviour
     public void generate(int width = 10)
     {
         canvas.transform.parent = null;
+        camera.transform.parent = null;
         cells?.ForEach(cell => Destroy(cell.gameObject));
         cells = new List<CellObject>();
         playerObj = generateCell(0, 0, playerTemplate);
         canvas.transform.parent = playerObj.transform;
         canvas.transform.position = Vector2.up;
+        camera.transform.parent = playerObj.transform;
+        camera.transform.position = new Vector3(0,0,-10);
         for (int i = 0; i < width; i++)
         {
             float min = -(i + 1.0f) / 2.0f;
