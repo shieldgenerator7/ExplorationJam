@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CellArranger : MonoBehaviour
 {
+    public float range = 1.5f;
     public Cell playerTemplate;
     public List<Cell> templates;
 
@@ -22,6 +23,19 @@ public class CellArranger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D rch2d =Physics2D.Raycast(mousePos, Vector2.up, 0.1f);
+            if (rch2d.collider && rch2d.collider.gameObject != playerObj.gameObject)
+            {
+                if ((rch2d.collider.transform.position - playerObj.transform.position).magnitude <= range)
+                {
+                    playerObj.transform.position = rch2d.collider.transform.position;
+                    Destroy(rch2d.collider.gameObject);
+                }
+            }
+        }
     }
 
     public void generate(int width = 10)

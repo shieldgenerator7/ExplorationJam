@@ -6,6 +6,7 @@ using UnityEngine;
 public class Cell : ScriptableObject
 {
     public Sprite sprite;
+    public Color color = Color.white;
     public enum Type
     {
         NONE,

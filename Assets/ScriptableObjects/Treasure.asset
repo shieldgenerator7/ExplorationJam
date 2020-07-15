@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f50bf3a1bf707a42986502d21019b0b, type: 3}
-  m_Name: Player
+  m_Name: Treasure
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: d04d118220c3f8e43b7d68d33db34345, type: 3}
+  sprite: {fileID: 21300000, guid: 8d6d700a648c9c04bb6c519048a68c20, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
-  type: 1
+  type: 3
   rpsList: []

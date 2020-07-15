@@ -22,5 +22,6 @@ public class CellObject : MonoBehaviour
     {
         this.cell = cell;
         GetComponent<SpriteRenderer>().sprite = cell.sprite;
+        GetComponent<SpriteRenderer>().color = cell.color;
     }
 }
