@@ -17,4 +17,10 @@ public class CellObject : MonoBehaviour
     {
         
     }
+
+    public void acceptCell(Cell cell)
+    {
+        this.cell = cell;
+        GetComponent<SpriteRenderer>().sprite = cell.sprite;
+    }
 }

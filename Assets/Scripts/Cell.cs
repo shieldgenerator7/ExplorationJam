@@ -8,6 +8,7 @@ public class Cell : ScriptableObject
     public Sprite sprite;
     public enum Type
     {
+        NONE,
         PLAYER,
         ENEMY,
         ITEM
