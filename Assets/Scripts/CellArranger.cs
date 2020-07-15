@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CellArranger : MonoBehaviour
@@ -41,6 +42,10 @@ public class CellArranger : MonoBehaviour
                     Destroy(rch2d.collider.gameObject);
                 }
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
